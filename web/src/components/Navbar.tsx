@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export const Navbar = () => {
   return (
-    <header className="flex h-24 w-full items-center justify-between px-12">
+    <header className="flex h-24 w-full items-center justify-between px-27.5">
       <Link
         to="/"
         className="rounded-md px-4 py-2 text-2xl font-bold text-heading transition hover:bg-white/10"
