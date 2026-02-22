@@ -1,1 +1,37 @@
-@import "tailwindcss"
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap');
+
+@import "tailwindcss";
+
+:root {
+    --background: #13141A;
+    --foreground: #6C6F8B;
+    --secondary-text: #9B9FC7;
+    --heading-text: #B8BACF;
+    --border: #383B5A;
+    --button-success: #54B77D;
+    --accent-color: #e94957;
+}
+
+
+@theme {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-secondary: var(--secondary-text);
+    --color-heading: var(--heading-text);
+    --color-border: var(--border);
+    --color-success: var(--button-success);
+    --color-accent: var(--accent-color);
+
+
+    --font-heading: "Sora", monospace;
+    --font-body: "Inter", monospace;
+}
+
+
+body {
+    @apply bg-background text-foreground font-body
+}
+
+::-webkit-scrollbar {
+    background-color: var(--background);
+}
