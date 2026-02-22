@@ -1,10 +1,29 @@
+import { Link } from "@tanstack/react-router";
+
 export const Navbar = () => {
   return (
-    <div className="w-full h-28 flex px-12 items-center justify-between">
-      <div className="font-bold text-3xl tracking-tight text-heading">
-        <h1>Rakshit Gumber</h1>
-      </div>
-      <div></div>
-    </div>
+    <header className="flex h-24 w-full items-center justify-between px-12">
+      <Link
+        to="/"
+        className="rounded-md px-4 py-2 text-2xl font-bold text-heading transition hover:bg-white/10"
+      >
+        Rakshit Gumber
+      </Link>
+
+      <nav className="flex items-center gap-6">
+        <Link
+          to="/blog"
+          className="rounded-md px-4 py-2 text-lg font-medium transition hover:bg-white/10"
+        >
+          Blog
+        </Link>
+        {/* <Link
+          to="/project"
+          className="rounded-md px-4 py-2 text-lg font-medium transition hover:bg-white/10"
+        >
+          Projects
+        </Link> */}
+      </nav>
+    </header>
   );
 };
