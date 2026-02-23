@@ -7,4 +7,6 @@ tags: ["personal"]
 
 # I am Rakshit Gumber
 
+Hi, I am Rakshit, an explorer. You can find me doing many kind of work.
+
 # Reference
