@@ -1,0 +1,24 @@
+---
+title: "Building an Interrupt-Safe Ring Buffer in C"
+date: "2026-02-20"
+description: "A practical implementation for lock-free producer/consumer paths in embedded systems."
+tags: ["systems", "c", "concurrency"]
+---
+
+When both an ISR and the main loop need to share data, I prefer fixed-size lock-free buffers over dynamic queues.
+
+## Design Goals
+
+- bounded memory
+- deterministic writes
+- clear overflow behavior
+
+```c
+typedef struct {
+  volatile uint32_t head;
+  volatile uint32_t tail;
+  uint8_t data[256];
+} ring_buffer_t;
+```
+
+The key point is to keep mutation paths minimal and avoid expensive synchronization inside interrupts.

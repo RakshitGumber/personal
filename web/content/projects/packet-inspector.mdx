@@ -1,0 +1,19 @@
+---
+title: "Packet Inspector"
+date: "2026-02-11"
+description: "CLI tool for decoding binary protocol frames with reproducible fixtures."
+tags: ["networking", "tooling"]
+stack: ["Rust", "Serde", "Tokio"]
+github: "https://github.com/example/packet-inspector"
+lessons:
+  - "Fixture quality matters more than parser cleverness."
+  - "Deterministic formatting enables stable diff-based debugging."
+---
+
+Built to inspect frame payloads while testing protocol changes.
+
+## Highlights
+
+- strict parse errors with byte offsets
+- snapshot tests for fixture packs
+- terminal-friendly hexdump output

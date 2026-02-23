@@ -5,17 +5,27 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build:content": "node scripts/generate-feeds.mjs",
     "build": "tsc -b && vite build",
+    "build:all": "npm run build:content && npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.2.0",
     "@tanstack/react-router": "^1.162.2",
     "@tanstack/react-router-devtools": "^1.162.2",
+    "framer-motion": "^12.34.3",
+    "gray-matter": "^4.0.3",
+    "motion-dom": "^12.34.3",
+    "prismjs": "^1.30.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
+    "reading-time": "^1.5.0",
+    "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.2.0"
   },
   "devDependencies": {

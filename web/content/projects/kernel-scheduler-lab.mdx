@@ -1,0 +1,25 @@
+---
+title: "Kernel Scheduler Lab"
+date: "2026-02-18"
+description: "A lightweight scheduler sandbox to test fairness and run-queue heuristics."
+tags: ["kernel", "scheduler"]
+stack: ["C", "QEMU", "Make", "GDB"]
+github: "https://github.com/example/kernel-scheduler-lab"
+lessons:
+  - "Fairness metrics need workload-specific baselines."
+  - "Trace logs should be sampled to avoid observer overhead."
+  - "Simple queue structures improve debuggability."
+---
+
+This project started as a small experiment to compare round-robin and weighted scheduling under synthetic workloads.
+
+## Development Notes
+
+1. Implemented a baseline run queue with fixed-size arrays.
+2. Added event trace markers for dispatch decisions.
+3. Exposed per-task wait/runtime stats for post-run analysis.
+
+## Next Iteration
+
+- per-core queue simulation
+- lock contention instrumentation

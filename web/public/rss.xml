@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Rakshit Gumber Blog</title>
+    <link>https://rakshit.dev</link>
+    <description>Technical writing, systems experiments, and build notes.</description>
+
+  <item>
+    <title>Building an Interrupt-Safe Ring Buffer in C</title>
+    <link>https://rakshit.dev/blog/interrupt-safe-ring-buffer</link>
+    <guid>https://rakshit.dev/blog/interrupt-safe-ring-buffer</guid>
+    <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
+    <description>A practical implementation for lock-free producer/consumer paths in embedded systems.</description>
+  </item>
+
+  <item>
+    <title>Tracing Memory Latency in a Tiny Runtime</title>
+    <link>https://rakshit.dev/blog/tracing-memory-latency</link>
+    <guid>https://rakshit.dev/blog/tracing-memory-latency</guid>
+    <pubDate>Mon, 16 Feb 2026 00:00:00 GMT</pubDate>
+    <description>Notes from profiling allocator behavior using lightweight event tracing.</description>
+  </item>
+  </channel>
+</rss>
