@@ -9,11 +9,6 @@ const rootDir = fileURLToPath(new URL(".", import.meta.url));
 const contentDir = path.resolve(rootDir, "../content");
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      "@content": contentDir,
-    },
-  },
   server: {
     fs: {
       allow: [rootDir, contentDir],
