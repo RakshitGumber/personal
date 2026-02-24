@@ -17,7 +17,7 @@ export function CommandPalette() {
       const target = event.target as HTMLElement | null;
       if (target && ["INPUT", "TEXTAREA"].includes(target.tagName)) return;
 
-      if (event.key.toLowerCase() === "k") {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
         setOpen((value) => !value);
       }
@@ -36,9 +36,12 @@ export function CommandPalette() {
       { id: "home", label: "Go to Home", action: () => navigate({ to: "/" }) },
       { id: "blog", label: "Go to Blog", action: () => navigate({ to: "/blog" }) },
       { id: "projects", label: "Go to Projects", action: () => navigate({ to: "/projects" }) },
+      { id: "case-studies", label: "Go to Case Studies", action: () => navigate({ to: "/case-studies" }) },
+      { id: "search", label: "Go to Search", action: () => navigate({ to: "/search" }) },
       { id: "lab", label: "Go to Lab", action: () => navigate({ to: "/lab" }) },
       { id: "media", label: "Go to Media", action: () => navigate({ to: "/media" }) },
       { id: "thoughts", label: "Go to Thoughts", action: () => navigate({ to: "/thoughts" }) },
+      { id: "now", label: "Go to Now", action: () => navigate({ to: "/now" }) },
       { id: "about", label: "Go to About", action: () => navigate({ to: "/about" }) },
       { id: "rss", label: "Open RSS Feed", action: () => window.open("/rss.xml", "_blank") },
     ],

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { MediaEmbed } from "@/components/media/MediaEmbed";
 import { Seo } from "@/components/seo/Seo";
 import { mediaPosts } from "@/lib/content";
 
@@ -18,11 +19,7 @@ function RouteComponent() {
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {mediaPosts.map((item) => (
           <article key={item.slug} className="card overflow-hidden">
-            {item.type === "video" ? (
-              <video src={item.src} controls preload="metadata" className="aspect-video w-full object-cover" />
-            ) : (
-              <img src={item.src} alt={item.title} loading="lazy" className="aspect-video w-full object-cover" />
-            )}
+            <MediaEmbed type={item.type} src={item.src} alt={item.title} />
             <div className="p-4">
               <h2 className="text-lg font-semibold">{item.title}</h2>
               <p className="mt-1 text-sm text-muted">{item.description}</p>

@@ -5,6 +5,8 @@ import matter from "gray-matter";
 const root = process.cwd();
 const siteUrl = "https://rakshit.dev";
 const contentBlogDir = path.resolve(root, "content/blog");
+const contentProjectDir = path.resolve(root, "content/projects");
+const contentCaseStudyDir = path.resolve(root, "content/case-studies");
 const outputPublicDir = path.resolve(root, "public");
 
 async function getBlogPosts() {
@@ -66,10 +68,19 @@ ${items}
 }
 
 async function buildSitemap(posts) {
-  const staticRoutes = ["/", "/blog", "/projects", "/lab", "/media", "/thoughts", "/about"];
+  const staticRoutes = ["/", "/blog", "/projects", "/case-studies", "/search", "/now", "/lab", "/media", "/thoughts", "/about"];
+  const projectEntries = (await fs.readdir(contentProjectDir))
+    .filter((entry) => entry.endsWith(".mdx"))
+    .map((entry) => entry.replace(".mdx", ""));
+  const caseStudyEntries = (await fs.readdir(contentCaseStudyDir))
+    .filter((entry) => entry.endsWith(".mdx"))
+    .map((entry) => entry.replace(".mdx", ""));
+
   const urls = [
     ...staticRoutes.map((route) => `<url><loc>${siteUrl}${route}</loc></url>`),
     ...posts.map((post) => `<url><loc>${siteUrl}/blog/${post.slug}</loc></url>`),
+    ...projectEntries.map((slug) => `<url><loc>${siteUrl}/projects/${slug}</loc></url>`),
+    ...caseStudyEntries.map((slug) => `<url><loc>${siteUrl}/case-studies/${slug}</loc></url>`),
   ].join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -80,6 +91,15 @@ ${urls}
   await fs.writeFile(path.join(outputPublicDir, "sitemap.xml"), xml, "utf8");
 }
 
+async function buildRobots() {
+  const robots = `User-agent: *
+Allow: /
+
+Sitemap: ${siteUrl}/sitemap.xml`;
+  await fs.writeFile(path.join(outputPublicDir, "robots.txt"), robots, "utf8");
+}
+
 const posts = await getBlogPosts();
 await buildRss(posts);
 await buildSitemap(posts);
+await buildRobots();

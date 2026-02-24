@@ -1,5 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { BlogCard } from "@/components/ui/BlogCard";
+import { Pagination } from "@/components/ui/Pagination";
+import { SearchBar } from "@/components/ui/SearchBar";
+import { Tag } from "@/components/ui/Tag";
 import { Seo } from "@/components/seo/Seo";
 import { blogPosts } from "@/lib/content";
 
@@ -10,11 +14,15 @@ export const Route = createFileRoute("/blog/")({
 function RouteComponent() {
   const [activeTag, setActiveTag] = useState<string>("all");
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  const perPage = 5;
 
   const tags = useMemo(() => {
     const mergedTags = new Set(blogPosts.flatMap((post) => post.tags));
     return ["all", ...Array.from(mergedTags)];
   }, []);
+
+  const pinnedPosts = useMemo(() => blogPosts.filter((post) => post.pinned), []);
 
   const filteredPosts = useMemo(() => {
     return blogPosts.filter((post) => {
@@ -26,6 +34,9 @@ function RouteComponent() {
     });
   }, [activeTag, query]);
 
+  const pageCount = Math.max(1, Math.ceil(filteredPosts.length / perPage));
+  const pagedPosts = filteredPosts.slice((page - 1) * perPage, page * perPage);
+
   return (
     <main className="space-y-8">
       <Seo title="Blog" description="Technical blog posts covering systems, experiments, and implementation notes." path="/blog" />
@@ -33,49 +44,52 @@ function RouteComponent() {
         <h1 className="text-4xl font-semibold tracking-tight">Blog</h1>
         <p className="max-w-2xl text-muted">Long-form technical writing, deep dives, and developer notes.</p>
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <input
-            type="search"
+          <SearchBar
+            label="Search posts"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(value) => {
+              setPage(1);
+              setQuery(value);
+            }}
             placeholder="Search posts..."
-            className="w-full border border-line bg-surface px-3 py-2 text-sm outline-none placeholder:text-muted focus:border-accent md:max-w-xs"
+            className="w-full md:max-w-xs"
           />
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <button
                 key={tag}
                 type="button"
-                onClick={() => setActiveTag(tag)}
-                className={`pill px-3 py-1 ${activeTag === tag ? "border-accent text-accent" : ""}`}
+                onClick={() => {
+                  setPage(1);
+                  setActiveTag(tag);
+                }}
               >
-                {tag}
+                <Tag active={activeTag === tag}>{tag}</Tag>
               </button>
             ))}
           </div>
         </div>
       </header>
 
+      {pinnedPosts.length > 0 && activeTag === "all" && !query ? (
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Pinned Posts</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {pinnedPosts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="space-y-4">
-        {filteredPosts.map((blog) => (
-          <article key={blog.slug} className="card p-5 transition-transform duration-150 hover:-translate-y-0.5">
-            <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
-              <span>{blog.date}</span>
-              <span>•</span>
-              <span>{blog.minutes} min read</span>
-              <span>•</span>
-              <span>{blog.tags.join(", ")}</span>
-            </div>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight">
-              <Link to="/blog/$slug" params={{ slug: blog.slug }} className="hover:text-accent">
-                {blog.title}
-              </Link>
-            </h2>
-            <p className="mt-2 text-sm text-muted">{blog.summary}</p>
-          </article>
+        {pagedPosts.map((blog) => (
+          <BlogCard key={blog.slug} post={blog} />
         ))}
         {filteredPosts.length === 0 ? (
           <article className="card p-5 text-muted">No matching posts found.</article>
         ) : null}
+        <Pagination page={page} pageCount={pageCount} onPageChange={setPage} />
       </section>
     </main>
   );

@@ -38,6 +38,30 @@ function RouteComponent() {
           developer workflows.
         </p>
       </section>
+
+      <section className="card space-y-4 p-6">
+        <h2 className="text-xl font-semibold">Skills</h2>
+        <ul className="list-disc space-y-2 pl-6 text-muted">
+          <li>Low-level systems engineering in C and Rust</li>
+          <li>Performance profiling, tracing, and instrumentation</li>
+          <li>Developer tooling and interface design</li>
+        </ul>
+      </section>
+
+      <section className="card space-y-4 p-6">
+        <h2 className="text-xl font-semibold">Contact</h2>
+        <div className="flex flex-wrap gap-4 text-sm">
+          <a href="https://github.com" className="text-accent" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a href="https://x.com" className="text-accent" target="_blank" rel="noopener noreferrer">
+            X / Twitter
+          </a>
+          <a href="mailto:hello@example.com" className="text-accent">
+            Email
+          </a>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,0 +1,33 @@
+---
+title: "Interrupt Budget Instrumentation"
+description: "How we tracked ISR latency regressions in a constrained runtime."
+date: "2026-02-17"
+tags: ["systems", "instrumentation"]
+featured: true
+problem: "Interrupt latency spikes caused packet drops under burst traffic."
+approach: "Added low-overhead trace points and ring-buffer snapshots around ISR boundaries."
+architecture: "Capture path emits fixed-size records consumed by offline analysis tooling."
+tradeoffs: "Added slight constant overhead in exchange for reproducible latency evidence."
+lessonsLearned: "Observability must be built into low-level components from day one."
+coverImage: "/og/default-og.svg"
+---
+
+## Problem
+
+Traffic bursts caused intermittent drops and we lacked reproducible traces from ISR paths.
+
+## Approach
+
+We introduced explicit trace markers, then correlated them with queue depth snapshots.
+
+## Architecture
+
+A fixed-width event record format kept writes deterministic and parseable.
+
+## Tradeoffs
+
+Instrumentation overhead stayed under 2 microseconds per event, but reduced peak throughput slightly.
+
+## Lessons Learned
+
+Latency debugging gets exponentially harder when event formats drift.

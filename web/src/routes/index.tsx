@@ -1,8 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { animate, useReducedMotion } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { MediaEmbed } from "@/components/media/MediaEmbed";
 import { Seo } from "@/components/seo/Seo";
-import { blogPosts, mediaPosts, projectPosts, thoughtPosts } from "@/lib/content";
+import { BlogCard } from "@/components/ui/BlogCard";
+import { ProjectCard } from "@/components/ui/ProjectCard";
+import { ThoughtCard } from "@/components/ui/ThoughtCard";
+import { blogPosts, mediaPosts, nowPosts, projectPosts, thoughtPosts } from "@/lib/content";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -15,6 +19,7 @@ function RouteComponent() {
   const latestBlogs = blogPosts.slice(0, 3);
   const latestThoughts = thoughtPosts.slice(0, 4);
   const latestMedia = mediaPosts.slice(0, 4);
+  const currentNow = nowPosts[0];
 
   useEffect(() => {
     if (prefersReducedMotion || !heroRef.current) return;
@@ -36,6 +41,7 @@ function RouteComponent() {
           I write technical blogs, share implementation notes, and publish development clips while exploring systems,
           performance, and tooling design.
         </p>
+        {currentNow ? <p className="text-sm text-muted">Current focus: {currentNow.currentProjects[0]}</p> : null}
         <div className="flex flex-wrap gap-3 text-sm text-muted">
           <a href="#featured-projects" className="border border-line px-3 py-2 hover:border-accent hover:text-text">
             featured projects
@@ -58,17 +64,7 @@ function RouteComponent() {
         </header>
         <div className="grid gap-4 md:grid-cols-3">
           {featuredProjects.map((project) => (
-            <article
-              key={project.slug}
-              className={`card p-5 ${prefersReducedMotion ? "" : "transition-transform duration-150 hover:-translate-y-1"}`}
-            >
-              <p className="mb-3 font-mono text-xs text-muted">{project.date}</p>
-              <h3 className="text-xl font-semibold">{project.title}</h3>
-              <p className="mt-3 text-sm text-muted">{project.summary}</p>
-              <a className="mt-4 inline-block text-sm text-accent" href={`/projects/${project.slug}`}>
-                open notes
-              </a>
-            </article>
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </section>
@@ -82,19 +78,7 @@ function RouteComponent() {
         </header>
         <div className="space-y-3">
           {latestBlogs.map((blog) => (
-            <article key={blog.slug} className="card flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 className="text-lg font-semibold">{blog.title}</h3>
-                <p className="mt-1 text-sm text-muted">{blog.summary}</p>
-              </div>
-              <div className="flex items-center gap-3 text-xs text-muted">
-                <span>{blog.minutes} min read</span>
-                <span>{blog.date}</span>
-                <a className="text-accent" href={`/blog/${blog.slug}`}>
-                  open
-                </a>
-              </div>
-            </article>
+            <BlogCard key={blog.slug} post={blog} />
           ))}
         </div>
       </section>
@@ -110,8 +94,7 @@ function RouteComponent() {
           <div className="space-y-3">
             {latestThoughts.map((thought) => (
               <article key={thought.slug} className="card p-4">
-                <p className="text-sm text-[#d9d9d9]">{thought.text}</p>
-                <p className="mt-3 font-mono text-xs text-muted">{thought.date}</p>
+                <ThoughtCard thought={thought} />
               </article>
             ))}
           </div>
@@ -127,11 +110,7 @@ function RouteComponent() {
           <div className="grid grid-cols-2 gap-3">
             {latestMedia.map((item) => (
               <article key={item.slug} className="card overflow-hidden">
-                {item.type === "video" ? (
-                  <video src={item.src} controls className="aspect-video w-full object-cover" preload="metadata" />
-                ) : (
-                  <img src={item.src} alt={item.title} className="aspect-video w-full object-cover" loading="lazy" />
-                )}
+                <MediaEmbed type={item.type} src={item.src} alt={item.title} />
                 <div className="p-3">
                   <p className="text-sm">{item.title}</p>
                   <p className="mt-1 font-mono text-xs text-muted">{item.date}</p>
@@ -145,15 +124,15 @@ function RouteComponent() {
       <section className="border-t border-line pt-8">
         <p className="text-sm text-muted">
           Find me on{" "}
-          <a href="https://github.com" className="text-accent">
+          <a href="https://github.com" className="text-accent" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           ,{" "}
-          <a href="https://twitter.com" className="text-accent">
+          <a href="https://twitter.com" className="text-accent" target="_blank" rel="noopener noreferrer">
             Twitter
           </a>
           , and{" "}
-          <a href="https://youtube.com" className="text-accent">
+          <a href="https://youtube.com" className="text-accent" target="_blank" rel="noopener noreferrer">
             YouTube
           </a>
           .

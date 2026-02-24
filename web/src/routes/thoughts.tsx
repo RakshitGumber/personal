@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Seo } from "@/components/seo/Seo";
+import { ThoughtCard } from "@/components/ui/ThoughtCard";
 import { thoughtPosts } from "@/lib/content";
 
 export const Route = createFileRoute("/thoughts")({
@@ -18,18 +19,25 @@ function RouteComponent() {
       <section className="space-y-3">
         {thoughtPosts.map((entry) => (
           <article key={entry.slug} className="card p-5">
-            <p className="text-sm text-[#d4d4d4]">{entry.text}</p>
+            <ThoughtCard thought={entry} />
             {entry.links.length > 0 ? (
               <div className="mt-3 flex flex-wrap gap-3">
                 {entry.links.map((link) => (
-                  <a key={link} href={link} className="text-xs text-accent">
+                  <a key={link} href={link} className="text-xs text-accent" target="_blank" rel="noopener noreferrer">
                     {link}
                   </a>
                 ))}
               </div>
             ) : null}
-            {entry.media ? <img src={entry.media} alt="thought media" className="mt-4 max-h-80 w-full border border-line object-cover" /> : null}
-            <p className="mt-4 font-mono text-xs text-muted">{entry.date}</p>
+            {entry.media ? (
+              <img
+                src={entry.media}
+                alt={`Media for thought posted on ${entry.date}`}
+                loading="lazy"
+                decoding="async"
+                className="mt-4 max-h-80 w-full border border-line object-cover"
+              />
+            ) : null}
           </article>
         ))}
       </section>
