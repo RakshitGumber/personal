@@ -2,11 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { animate, useReducedMotion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { MediaEmbed } from "@/components/media/MediaEmbed";
-import { Seo } from "@/components/seo/Seo";
+// import { Seo } from "@/components/seo/Seo";
 import { BlogCard } from "@/components/ui/BlogCard";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { ThoughtCard } from "@/components/ui/ThoughtCard";
-import { blogPosts, mediaPosts, nowPosts, projectPosts, thoughtPosts } from "@/lib/content";
+import { blogPosts, mediaPosts, nowPosts, projectPosts, thoughtPosts } from "@/libs/content";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -23,33 +23,50 @@ function RouteComponent() {
 
   useEffect(() => {
     if (prefersReducedMotion || !heroRef.current) return;
-    animate(heroRef.current, { opacity: [0.2, 1], transform: ["translateY(12px)", "translateY(0px)"] }, { duration: 0.28 });
+    animate(
+      heroRef.current,
+      { opacity: [0.2, 1], transform: ["translateY(12px)", "translateY(0px)"] },
+      { duration: 0.28 },
+    );
   }, [prefersReducedMotion]);
 
   return (
     <div className="space-y-20">
-      <Seo title="Home" description="Personal workshop for software experiments, deep writing, and dev media." path="/" />
+      {/* <Seo
+        title="Home"
+        description="Personal workshop for software experiments, deep writing, and dev media."
+        path="/"
+      /> */}
 
       <section id="top" ref={heroRef} className="space-y-8 border-b border-line pb-12">
-        <p className="font-mono text-xs tracking-[0.22em] text-accent">
-          SOFTWARE ENGINEER // LAB NOTEBOOK
-        </p>
+        <p className="font-mono text-xs tracking-[0.22em] text-accent">SOFTWARE ENGINEER // LAB NOTEBOOK</p>
         <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
           Building low-level systems, documenting the process, and shipping experiments in public.
         </h1>
         <p className="max-w-2xl text-base text-muted md:text-lg">
-          I write technical blogs, share implementation notes, and publish development clips while exploring systems,
-          performance, and tooling design.
+          I write technical blogs, share implementation notes, and publish development clips while exploring
+          systems, performance, and tooling design.
         </p>
-        {currentNow ? <p className="text-sm text-muted">Current focus: {currentNow.currentProjects[0]}</p> : null}
+        {currentNow ? (
+          <p className="text-sm text-muted">Current focus: {currentNow.currentProjects[0]}</p>
+        ) : null}
         <div className="flex flex-wrap gap-3 text-sm text-muted">
-          <a href="#featured-projects" className="border border-line px-3 py-2 hover:border-accent hover:text-text">
+          <a
+            href="#featured-projects"
+            className="border border-line px-3 py-2 hover:border-accent hover:text-text"
+          >
             featured projects
           </a>
-          <a href="#latest-posts" className="border border-line px-3 py-2 hover:border-accent hover:text-text">
+          <a
+            href="#latest-posts"
+            className="border border-line px-3 py-2 hover:border-accent hover:text-text"
+          >
             latest blogs
           </a>
-          <a href="#recent-thoughts" className="border border-line px-3 py-2 hover:border-accent hover:text-text">
+          <a
+            href="#recent-thoughts"
+            className="border border-line px-3 py-2 hover:border-accent hover:text-text"
+          >
             recent thoughts
           </a>
         </div>

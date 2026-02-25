@@ -30,25 +30,12 @@
   --font-mono: "IBM Plex Mono", "Consolas", monospace;
 }
 
-* {
-  border-color: var(--line);
-}
-
-html {
-  scroll-behavior: smooth;
-}
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  text-rendering: geometricPrecision;
+  @apply bg-bg text-text font-sans;
 }
 
-a {
-  color: inherit;
-}
+
 
 a:focus-visible,
 button:focus-visible,
