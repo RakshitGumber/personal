@@ -3,7 +3,6 @@
 @import "prismjs/themes/prism-tomorrow.css";
 
 :root {
-  color-scheme: dark;
   --bg: #090909;
   --surface: #111111;
   --surface-2: #161616;
@@ -17,15 +16,6 @@
   --space-4: 1rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
-}
-
-:root[data-theme="midnight"] {
-  --bg: #050505;
-  --surface: #0d0d0d;
-  --surface-2: #141414;
-  --line: #262626;
-  --text: #f3f3f3;
-  --muted: #a7a7a7;
 }
 
 @theme {
@@ -116,7 +106,7 @@ input:focus-visible {
   padding: 1rem;
 }
 
-.prose-shell :not(pre) > code {
+.prose-shell :not(pre)>code {
   border: 1px solid var(--line);
   background: #171717;
   padding: 0.15rem 0.4rem;
