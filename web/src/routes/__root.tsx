@@ -1,6 +1,7 @@
-import * as React from "react";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
-import { SiteShell } from "@/components/layout/SiteShell";
+// import { CommandPalette } from "@/components/navigation/CommandPalette";
+import { Navbar } from "@/components/core/Navbar";
+import { Footer } from "@/components/core/Footer";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -8,10 +9,13 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <React.Fragment>
-      <SiteShell>
+    <div className="min-h-screen bg-bg text-text">
+      <Navbar />
+      <main className="container-shell py-8 md:py-12">
         <Outlet />
-      </SiteShell>
-    </React.Fragment>
+      </main>
+      <Footer />
+      {/* <CommandPalette /> */}
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
-@import "prismjs/themes/prism-tomorrow.css";
 
 :root {
   --bg: #090909;
@@ -33,78 +32,4 @@
 
 body {
   @apply bg-bg text-text font-sans;
-}
-
-
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-::selection {
-  background: color-mix(in srgb, var(--accent) 28%, transparent);
-}
-
-.container-shell {
-  margin-inline: auto;
-  width: min(1400px, 100% - 2rem);
-}
-
-.card {
-  border: 1px solid var(--line);
-  background: var(--surface);
-  border-radius: 0.125rem;
-}
-
-.pill {
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: lowercase;
-  color: var(--muted);
-}
-
-.prose-shell h1,
-.prose-shell h2,
-.prose-shell h3 {
-  color: var(--text);
-  letter-spacing: -0.02em;
-  margin-top: 2rem;
-}
-
-.prose-shell p,
-.prose-shell li {
-  color: #d1d1d1;
-  line-height: 1.8;
-}
-
-.prose-shell a {
-  color: var(--accent);
-}
-
-.prose-shell pre {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  background: #0e0e0e !important;
-  padding: 1rem;
-}
-
-.prose-shell :not(pre)>code {
-  border: 1px solid var(--line);
-  background: #171717;
-  padding: 0.15rem 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-  width: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #1f1f1f;
 }

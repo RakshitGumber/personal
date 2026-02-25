@@ -2,18 +2,6 @@ import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
-const navItems = [
-  { to: "/", label: "home" },
-  { to: "/projects", label: "projects" },
-  { to: "/case-studies", label: "case studies" },
-  { to: "/blog", label: "blog" },
-  { to: "/search", label: "search" },
-  { to: "/thoughts", label: "thoughts" },
-  { to: "/now", label: "now" },
-  { to: "/media", label: "media" },
-  { to: "/about", label: "about" },
-] as const;
-
 export function Navbar() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +15,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <nav className="flex items-center gap-2">
-            {navItems.map((item) => {
+            {/* {navItems.map((item) => {
               const isActive = pathname === item.to || pathname.startsWith(`${item.to}/`);
               return (
                 <Link
@@ -40,7 +28,7 @@ export function Navbar() {
                   {item.label}
                 </Link>
               );
-            })}
+            })} */}
           </nav>
           <ThemeToggle />
         </div>
@@ -58,16 +46,15 @@ export function Navbar() {
 
       {isOpen ? (
         <nav className="container-shell flex flex-col gap-2 border-t border-line py-3 md:hidden">
-          {navItems.map((item) => (
-            <Link
+          {/* <Link
               key={item.to}
               to={item.to}
               className="rounded-sm px-2 py-1.5 text-sm text-muted hover:bg-surface-2 hover:text-text"
               onClick={() => setIsOpen(false)}
             >
-              {item.label}
-            </Link>
-          ))}
+
+            </Link> */}
+
           <ThemeToggle />
         </nav>
       ) : null}

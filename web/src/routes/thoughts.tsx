@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Seo } from "@/components/seo/Seo";
 import { ThoughtCard } from "@/components/ui/ThoughtCard";
-import { thoughtPosts } from "@/lib/content";
+import { thoughtPosts } from "@/libs/content";
 
 export const Route = createFileRoute("/thoughts")({
   component: RouteComponent,
@@ -10,7 +9,6 @@ export const Route = createFileRoute("/thoughts")({
 function RouteComponent() {
   return (
     <main className="space-y-8">
-      <Seo title="Thoughts" description="Short-form engineering notes, links, and in-progress observations." path="/thoughts" />
       <header className="space-y-3 border-b border-line pb-6">
         <h1 className="text-4xl font-semibold tracking-tight">Thoughts</h1>
         <p className="max-w-2xl text-muted">Chronological feed of short posts, links, and quick ideas.</p>
@@ -23,7 +21,13 @@ function RouteComponent() {
             {entry.links.length > 0 ? (
               <div className="mt-3 flex flex-wrap gap-3">
                 {entry.links.map((link) => (
-                  <a key={link} href={link} className="text-xs text-accent" target="_blank" rel="noopener noreferrer">
+                  <a
+                    key={link}
+                    href={link}
+                    className="text-xs text-accent"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {link}
                   </a>
                 ))}
