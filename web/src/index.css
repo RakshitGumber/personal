@@ -18,7 +18,7 @@
 }
 
 @theme {
-  --color-bg: var(--bg);
+  --color-background: var(--bg);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-line: var(--line);
@@ -31,5 +31,5 @@
 
 
 body {
-  @apply bg-bg text-text font-sans;
+  @apply bg-background text-text font-sans;
 }

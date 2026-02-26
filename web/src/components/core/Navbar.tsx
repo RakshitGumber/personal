@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export function Navbar() {
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur-sm">
-      <div className="container-shell flex h-16 items-center justify-between gap-3">
-        <Link to="/" className="font-mono text-sm tracking-wider text-text">
-          rakshit.gumber
+    <header className="sticky top-0 z-40 w-full bg-white">
+      <div className="flex h-24 items-center justify-between max-w-7xl mx-auto">
+        <Link to="/" className="font-sans text-xl font-bold tracking-wider text-black">
+          Rakshit Gumber
         </Link>
 
         <div className="hidden items-center gap-2 md:flex">
@@ -30,7 +28,6 @@ export function Navbar() {
               );
             })} */}
           </nav>
-          <ThemeToggle />
         </div>
 
         <button
@@ -54,8 +51,6 @@ export function Navbar() {
             >
 
             </Link> */}
-
-          <ThemeToggle />
         </nav>
       ) : null}
     </header>
