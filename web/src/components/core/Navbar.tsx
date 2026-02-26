@@ -5,12 +5,11 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white">
+    <header className="sticky top-0 z-40 w-full bg-background">
       <div className="flex h-24 items-center justify-between max-w-7xl mx-auto">
-        <Link to="/" className="font-sans text-xl font-bold tracking-wider text-black">
+        <Link to="/" className="font-arvo text-xl font-semibold tracking-wide text-white">
           Rakshit Gumber
         </Link>
-
         <div className="hidden items-center gap-2 md:flex">
           <nav className="flex items-center gap-2">
             {/* {navItems.map((item) => {
@@ -42,7 +41,7 @@ export function Navbar() {
       </div>
 
       {isOpen ? (
-        <nav className="container-shell flex flex-col gap-2 border-t border-line py-3 md:hidden">
+        <nav className="flex flex-col gap-2 border-t border-line py-3 md:hidden">
           {/* <Link
               key={item.to}
               to={item.to}
