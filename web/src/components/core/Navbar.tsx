@@ -1,34 +1,23 @@
 import { useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-background">
-      <div className="flex h-24 items-center justify-between max-w-7xl mx-auto">
-        <Link to="/" className="font-arvo text-xl font-semibold tracking-wide text-white">
-          Rakshit Gumber
+    <header className="z-40 w-full bg-background">
+      <div className="flex h-24 items-center justify-between max-w-7xl mx-auto px-6">
+        <Link to="/" className="px-4 pt-3 pb-1 active:bg-slate-400/30 rounded-md">
+          <h1 className="font-arvo text-xl font-semibold tracking-widest">Rakshit Gumber</h1>
         </Link>
         <div className="hidden items-center gap-2 md:flex">
-          <nav className="flex items-center gap-2">
-            {/* {navItems.map((item) => {
-              const isActive = pathname === item.to || pathname.startsWith(`${item.to}/`);
-              return (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className={`rounded-sm px-3 py-1.5 text-sm transition ${
-                    isActive ? "bg-surface-2 text-accent" : "text-muted hover:text-text"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })} */}
-          </nav>
+          {/* <nav className="flex items-center gap-2">
+            <Link to="/blog" className="rounded-sm px-3 py-1.5 text-sm transition bg-surface-2 text-accent">
+              Blogs
+            </Link>
+          </nav> */}
         </div>
-
+        {/* 
         <button
           className="rounded-sm border border-line px-2 py-1 text-xs text-muted md:hidden"
           type="button"
@@ -37,7 +26,7 @@ export function Navbar() {
           onClick={() => setIsOpen((value) => !value)}
         >
           menu
-        </button>
+        </button> */}
       </div>
 
       {isOpen ? (
@@ -52,6 +41,7 @@ export function Navbar() {
             </Link> */}
         </nav>
       ) : null}
+      <hr className="border-line w-3/5 mx-auto" />
     </header>
   );
 }

@@ -38,16 +38,16 @@ function RouteComponent() {
         path="/"
       /> */}
 
-      <section id="top" ref={heroRef} className="space-y-8 border-b border-line pb-12">
-        <p className="font-mono text-xs tracking-[0.22em] text-accent">SOFTWARE ENGINEER // LAB NOTEBOOK</p>
+      {/* <section id="top" ref={heroRef} className="space-y-8 border-b border-line pb-12"> */}
+      {/* <p className="font-mono text-xs tracking-[0.22em] text-accent">SOFTWARE ENGINEER // LAB NOTEBOOK</p>
         <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
           Building low-level systems, documenting the process, and shipping experiments in public.
-        </h1>
-        <p className="max-w-2xl text-base text-muted md:text-lg">
+        </h1> */}
+      {/* <p className="max-w-2xl text-base text-muted md:text-lg">
           I write technical blogs, share implementation notes, and publish development clips while exploring
           systems, performance, and tooling design.
-        </p>
-        {currentNow ? (
+        </p> */}
+      {/* {currentNow ? (
           <p className="text-sm text-muted">Current focus: {currentNow.currentProjects[0]}</p>
         ) : null}
         <div className="flex flex-wrap gap-3 text-sm text-muted">
@@ -69,11 +69,11 @@ function RouteComponent() {
           >
             recent thoughts
           </a>
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
 
-      <section id="featured-projects" className="space-y-6">
-        <header className="flex items-end justify-between">
+      {/* <section id="featured-projects" className="space-y-6"> */}
+      {/* <header className="flex items-end justify-between">
           <h2 className="text-2xl font-semibold tracking-tight">Featured Projects</h2>
           <a href="/projects" className="text-sm text-accent">
             view all
@@ -135,11 +135,11 @@ function RouteComponent() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
+        </div> */}
+      {/* </section>
 
-      <section className="border-t border-line pt-8">
-        <p className="text-sm text-muted">
+      <section className="border-t border-line pt-8"> */}
+      {/* <p className="text-sm text-muted">
           Find me on{" "}
           <a href="https://github.com" className="text-accent" target="_blank" rel="noopener noreferrer">
             GitHub
@@ -153,8 +153,8 @@ function RouteComponent() {
             YouTube
           </a>
           .
-        </p>
-      </section>
+        </p> */}
+      {/* </section> */}
     </div>
   );
 }

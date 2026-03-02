@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "516bd2154eb843a8240e43d5b285229129853114ad7075a5e141e1c08e408c84"
+    },
+    "parallel-task": {
+      "source": "am-will/codex-skills",
+      "sourceType": "github",
+      "computedHash": "766cb30f18de3a5cf7b3e8af2d18ddb70e8e5d0fb35cb2d796f5e64894adc48b"
+    },
+    "parallel-task-spark": {
+      "source": "am-will/codex-skills",
+      "sourceType": "github",
+      "computedHash": "1254203a69de917457410744415a2b932639dd200cb04e029d0347a2e4942745"
+    },
+    "theme-factory": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "0290eabfd6fea9fcfd59c12de15e3f4046593185089956802b6d48ba1d07f428"
+    }
+  }
+}
