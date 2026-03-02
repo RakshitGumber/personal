@@ -1,12 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { animate, useReducedMotion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { MediaEmbed } from "@/components/media/MediaEmbed";
-// import { Seo } from "@/components/seo/Seo";
-import { BlogCard } from "@/components/ui/BlogCard";
-import { ProjectCard } from "@/components/ui/ProjectCard";
-import { ThoughtCard } from "@/components/ui/ThoughtCard";
-import { blogPosts, mediaPosts, nowPosts, projectPosts, thoughtPosts } from "@/libs/content";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -15,11 +9,6 @@ export const Route = createFileRoute("/")({
 function RouteComponent() {
   const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement | null>(null);
-  const featuredProjects = projectPosts.slice(0, 3);
-  const latestBlogs = blogPosts.slice(0, 3);
-  const latestThoughts = thoughtPosts.slice(0, 4);
-  const latestMedia = mediaPosts.slice(0, 4);
-  const currentNow = nowPosts[0];
 
   useEffect(() => {
     if (prefersReducedMotion || !heroRef.current) return;

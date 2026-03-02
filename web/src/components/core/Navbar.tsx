@@ -20,9 +20,6 @@ export function Navbar() {
         {/* 
         <button
           className="rounded-sm border border-line px-2 py-1 text-xs text-muted md:hidden"
-          type="button"
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
           onClick={() => setIsOpen((value) => !value)}
         >
           menu

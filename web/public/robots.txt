@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://rakshit.dev/sitemap.xml
